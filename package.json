@@ -1,0 +1,26 @@
+{
+  "name": "nodejs-crash-course",
+  "version": "1.0.0",
+  "description": "",
+  "main": "files.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeanchaneto/nodejs-crash-course.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeanchaneto/nodejs-crash-course/issues"
+  },
+  "homepage": "https://github.com/jeanchaneto/nodejs-crash-course#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
