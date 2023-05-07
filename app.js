@@ -1,4 +1,5 @@
 const express = require("express");
+const morgan = require("morgan");
 
 const app = express();
 
@@ -9,6 +10,14 @@ app.set("view engine", "ejs");
 
 //Listen for request
 app.listen(3000);
+
+//Middleware/ must use next() to move on otherwise server hangs
+app.use((req, res, next) => {
+  console.log(req.hostname);
+  next();
+});
+
+app.use(morgan("dev"));
 
 //Respond to request
 app.get("/", (req, res) => {
