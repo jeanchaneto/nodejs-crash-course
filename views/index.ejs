@@ -9,6 +9,19 @@
 <body>
     <h1>Node.js Master</h1>
     <p>My path to Node.js</p>
+    <%= message %>
+    <br>
     <a href="/about">About page</a>
+    <br>
+
+    <% if(blogs.length > 0) { %> 
+        <% blogs.forEach(blog => { %>
+            <h3><%=blog.title%></h3>
+            <br>
+            <p><%=blog.content%></p>
+        <% }) %>
+    <% } else {%>
+        <p>Nothing to display</p>
+    <% } %>
 </body>
 </html>
