@@ -1,27 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NodeJS Crash Course</title>
-</head>
-<body>
+  <%- include('./partials/head.ejs') %>
+  <body>
+    <%- include('./partials/nav.ejs') %>
     <h1>Node.js Master</h1>
     <p>My path to Node.js</p>
     <%= message %>
-    <br>
+    <br />
     <a href="/about">About page</a>
-    <br>
+    <br />
 
-    <% if(blogs.length > 0) { %> 
-        <% blogs.forEach(blog => { %>
-            <h3><%=blog.title%></h3>
-            <br>
-            <p><%=blog.content%></p>
-        <% }) %>
-    <% } else {%>
-        <p>Nothing to display</p>
+    <% if(blogs.length > 0) { %> <% blogs.forEach(blog => { %>
+    <h3><%=blog.title%></h3>
+    <br />
+    <p><%=blog.content%></p>
+    <% }) %> <% } else {%>
+    <p>Nothing to display</p>
     <% } %>
-</body>
+  </body>
 </html>
