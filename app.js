@@ -19,6 +19,9 @@ app.use((req, res, next) => {
 
 app.use(morgan("dev"));
 
+//Middleware & static files
+app.use(express.static('./public'));
+
 //Respond to request
 app.get("/", (req, res) => {
   //Response automatically sets the header and status code
