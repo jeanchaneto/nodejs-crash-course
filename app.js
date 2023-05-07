@@ -17,3 +17,14 @@ app.get("/about", (req, res) => {
   //looks for absolute path so specify root as 2nd argument
   res.sendFile("./views/about.html", { root: __dirname });
 });
+
+//redirect
+app.get("/about-me", (req, res) => {
+  res.redirect("/about");
+});
+
+//404 located last as express reads top to bottom
+app.use((req, res) => {
+    res.status(404).sendFile("./views/404.html", { root: __dirname });
+}
+);
