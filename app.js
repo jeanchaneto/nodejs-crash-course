@@ -5,6 +5,7 @@ const express = require("express");
 const morgan = require("morgan");
 const blogRoutes = require("./routes/blogRoutes");
 
+
 //Require mongoose
 const mongoose = require("mongoose");
 
