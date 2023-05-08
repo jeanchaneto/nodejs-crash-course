@@ -43,10 +43,10 @@ app.get("/", (req, res) => {
   //   res.sendFile("/views/index.html", { root: __dirname });
 
   const blogs = [
-    { title: "zefez", content: "fzefezfbcuiBUIBCBEbf" },
-    { title: "ver", content: "czenceznonec fnzi" },
-    { title: "ztg", content: "jvniuqbnvuqn  oifnezinf zefz" },
-    { title: "pok", content: "fqf,io EFNIOZnef ion" },
+    { title: "zefez", body: "fzefezfbcuiBUIBCBEbf" },
+    { title: "ver", body: "czenceznonec fnzi" },
+    { title: "ztg", body: "jvniuqbnvuqn  oifnezinf zefz" },
+    { title: "pok", body: "fqf,io EFNIOZnef ion" },
   ];
 
   // View engine response
