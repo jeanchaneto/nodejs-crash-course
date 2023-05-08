@@ -12,6 +12,7 @@ const Blog = require("./models/blog");
 
 const app = express();
 
+
 //Connect to MongoDB
 const dbURI = process.env.MONGODB_URI;
 //Async function
@@ -38,6 +39,8 @@ app.use(morgan("dev"));
 
 //Middleware & static files
 app.use(express.static("./public"));
+//Middleware to parse post form url data
+app.use(express.urlencoded({ extended: true}));
 
 // //*********Mongoose and monogdb sandbox routes**********
 // //Save doc to database
@@ -95,6 +98,16 @@ app.get("/blogs", (req, res) => {
     })
     .catch((err) => console.log(err));
 });
+
+//Handle blog post form
+app.post("/blogs", (req, res) => {
+  const blog = new Blog(req.body);
+  blog.save()
+    .then((result) => {
+      res.redirect('/blogs');
+    })
+    .catch((err) => console.log(err));
+})
 
 app.get("/about", (req, res) => {
   //Response automatically sets the header and status code
