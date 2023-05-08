@@ -1,15 +1,28 @@
+//Environement variable setup
+require("dotenv").config();
+
 const express = require("express");
 const morgan = require("morgan");
 
+//Require mongoose
+const mongoose = require("mongoose");
+
 const app = express();
+
+//Connect to MongoDB
+const dbURI = process.env.MONGODB_URI;
+//Async function
+mongoose.connect(dbURI)
+  .then((result) => app.listen(3000))
+  .catch((err) => console.log(err));
 
 //Register view engine
 app.set("view engine", "ejs");
 //if views in differetn folder than views:
 //app.set('views', 'CUSTOM_VIEW_FOLDER_NAME')
 
-//Listen for request
-app.listen(3000);
+//Listen for request only; after connection to db so moved to mongoose.connect
+// app.listen(3000);
 
 //Middleware/ must use next() to move on otherwise server hangs
 app.use((req, res, next) => {
@@ -20,7 +33,7 @@ app.use((req, res, next) => {
 app.use(morgan("dev"));
 
 //Middleware & static files
-app.use(express.static('./public'));
+app.use(express.static("./public"));
 
 //Respond to request
 app.get("/", (req, res) => {
