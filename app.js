@@ -7,6 +7,9 @@ const morgan = require("morgan");
 //Require mongoose
 const mongoose = require("mongoose");
 
+//Import models
+const Blog = require('./models/blog');
+
 const app = express();
 
 //Connect to MongoDB
@@ -34,6 +37,44 @@ app.use(morgan("dev"));
 
 //Middleware & static files
 app.use(express.static("./public"));
+
+
+
+//*********Mongoose and monogdb sandbox routes**********
+//Save doc to database
+app.get('/add-blog', (req, res) => {
+  //Use model to create new instance of a blog doc
+  const blog = new Blog({
+    title: 'new blog text',
+    snippet: 'Sick blog',
+    body: 'blablablablablablablablablablablablablablablablablablablablablablablablabla'
+  })
+  
+  blog.save()
+    .then((result) => {
+      res.send(result)
+    })
+    .catch((err) => console.log(err));
+})
+
+//Get docs from databse
+app.get('/all-blogs', (req, res) => {
+  Blog.find()
+    .then((result) => {
+      res.send(result)
+    })
+    .catch((err) => console.log(err));
+})
+
+//Get single doc
+app.get('/single-blog', (req, res) => {
+  Blog.findById('6458bfa7bee40f6820aa436d')
+    .then((result) => {
+      res.send(result)
+    })
+    .catch((err) => console.log(err))
+})
+
 
 //Respond to request
 app.get("/", (req, res) => {
