@@ -12,9 +12,11 @@
     <br />
 
     <% if(blogs.length > 0) { %> <% blogs.forEach(blog => { %>
-    <h3><%=blog.title%></h3>
-    <br />
-    <p><%=blog.body%></p>
+    <a href="/blogs/<%=blog._id%>">
+      <h3><%=blog.title%></h3>
+      <br />
+      <p><%=blog.body%></p>
+    </a>
     <% }) %> <% } else {%>
     <p>Nothing to display</p>
     <% } %>

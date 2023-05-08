@@ -119,6 +119,16 @@ app.get("/blogs/:id", (req, res) => {
     .catch((err) => console.log(err));
 })
 
+app.delete("/blogs/:id", (req, res) => {
+  const id = req.params.id;
+  Blog.findByIdAndDelete(id)
+  //Note when using AJAX request we cannot redirect with node.js so wen send json object instead
+    .then((result) => {
+      res.json({redirect: '/blogs'})
+    })
+    .catch((err) => console.log(err));
+})
+
 app.get("/about", (req, res) => {
   //Response automatically sets the header and status code
 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+  <body>
+    <%- include('./partials/nav.ejs') %>
+    <a href="/">Home page</a>
+    <a href="/about">About page</a>
+    <a href="/blog/create">Create blog</a>
+    <a href="/blogs">Blogs page</a>
+    <br />
+    <h1><%= blog.title %></h1>
+    <p><%= blog.body %></p>
+
+    <a class="delete" data-doc="<%= blog._id %>">DELETE</a>
+
+  </body>
+  <script>
+    const deleteBtn = document.querySelector('a.delete');
+    deleteBtn.addEventListener('click', (e) => {
+        const endpoint = `/blogs/${deleteBtn.dataset.doc}`;
+
+        fetch(endpoint, {
+            method: 'DELETE'
+        })
+        .then((response) => response.json())
+        .then((data) => window.location.href = data.redirect)
+        .catch((err) => console.log(err))
+    })
+  </script>
+</html>
